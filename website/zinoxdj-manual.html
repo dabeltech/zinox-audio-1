@@ -44,7 +44,6 @@
   footer p{margin:4px 0}
   @media(max-width:860px){.layout{grid-template-columns:1fr;gap:24px}nav.toc{position:static;border-left:0;border-bottom:1px solid var(--line);padding:0 0 16px;flex-direction:row;flex-wrap:wrap;gap:12px}}
 </style>
-<link rel="stylesheet" href="assets/mobile.css">
 </head>
 <body>
 <header class="top">
@@ -56,7 +55,7 @@
 </header>
 
 <div class="layout">
-  <nav class="toc" aria-label="Contents"><a href="#1-installing">Installing</a><a href="#2-adding-your-music">Adding your music</a><a href="#3-analysis">Analysis</a><a href="#4-the-decks">The decks</a><a href="#5-performance-pads">Performance pads</a><a href="#6-the-mixer">The mixer</a><a href="#7-effects">Effects</a><a href="#8-suggestions">Suggestions</a><a href="#9-sidelist-and-automix">Sidelist and Automix</a><a href="#10-library-details">Library details</a><a href="#11-recording">Recording</a><a href="#12-keyboard-and-midi">Keyboard and MIDI</a><a href="#13-where-your-data-lives">Where your data lives</a><a href="#14-troubleshooting">Troubleshooting</a><a href="#15-what-is-not-in-this-version">What is not in this version</a><a href="#support">Support</a></nav>
+  <nav class="toc" aria-label="Contents"><a href="#1-installing">Installing</a><a href="#2-adding-your-music">Adding your music</a><a href="#3-analysis">Analysis</a><a href="#4-the-decks">The decks</a><a href="#5-performance-pads">Performance pads</a><a href="#6-the-mixer">The mixer</a><a href="#7-effects">Effects</a><a href="#8-suggestions">Suggestions</a><a href="#9-sidelist-and-automix">Sidelist and Automix</a><a href="#10-library-details">Library details</a><a href="#11-online-and-streaming-accounts">Online and streaming accounts</a><a href="#12-recording">Recording</a><a href="#13-keyboard-and-midi">Keyboard and MIDI</a><a href="#14-where-your-data-lives">Where your data lives</a><a href="#15-troubleshooting">Troubleshooting</a><a href="#16-what-is-not-in-this-version">What is not in this version</a><a href="#support">Support</a></nav>
   <article>
 <h1 id="zinoxdj-user-manual">ZinoxDJ User Manual</h1>
 <p>ZinoxDJ is a DJ workstation for Windows and macOS. It gives you two decks, a mixer and a browser — and it studies your own music so it can tell you what mixes well with what is playing.</p>
@@ -226,10 +225,36 @@
 <p>Set a <strong>star rating</strong> from the panel or straight from the table. Click the same star again to clear the rating.</p>
 <p>Sort by any column. Search matches title, artist, album, genre — and also BPM and key, so typing <code>8A</code> or <code>128</code> finds tracks by what ZinoxDJ heard.</p>
 <hr>
-<h2 id="11-recording">11. Recording</h2>
+<h2 id="11-online-and-streaming-accounts">11. Online and streaming accounts</h2>
+<p>The <strong>Online</strong> tab helps you find tracks you do not have yet, and tells you which ones you already do.</p>
+<h3 id="search-catalogues">Search catalogues</h3>
+<p>Type a track, artist or album and search the Apple or Deezer catalogue. No account and no API key is needed for this. Every result is checked against your library:</p>
+<ul>
+<li><strong>In your library</strong> — you own it. The <strong>A</strong> and <strong>B</strong> buttons load it straight to a deck.</li>
+<li>Otherwise you get links out to Spotify, YouTube Music, Audiomack, Boomplay and Beatport, so you can go and buy or download it.</li>
+</ul>
+<h3 id="my-accounts">My accounts</h3>
+<p>Connect <strong>Spotify</strong> or <strong>Audiomack</strong> to import your own playlists and saved tracks. Open any playlist and ZinoxDJ tells you how many of its tracks you already own — <em>You own 34 of 60</em> — and marks each row, so preparing for a set becomes a matter of collecting the gaps.</p>
+<p>Connecting takes a moment of setup, because the credentials are yours rather than ZinoxDJ's:</p>
+<ul>
+<li>Click <strong>Connect Spotify</strong> (or Audiomack).</li>
+<li>Spotify: create an app at <strong>developer.spotify.com/dashboard</strong> and add <code>http://127.0.0.1/callback</code> as a redirect URI. Paste the <strong>Client ID</strong>. There is no secret to paste — ZinoxDJ signs in with PKCE. Audiomack: request API credentials and paste the <strong>consumer key</strong> and <strong>consumer secret</strong>.</li>
+<li>Click <strong>Connect</strong> again. A sign-in window opens; approve it, and your playlists appear.</li>
+</ul>
+<p>Your tokens are stored on your own machine, encrypted by the operating system's keychain, and are sent nowhere except the service they belong to. <strong>Disconnect</strong> erases them.</p>
+<h3 id="why-you-cannot-mix-streamed-audio">Why you cannot mix streamed audio</h3>
+<p>ZinoxDJ will not play a Spotify or Audiomack track through a deck, and no setting turns that on. This is not an oversight:</p>
+<ul>
+<li><strong>Spotify's player is DRM-sealed.</strong> Its audio is decrypted inside the browser's content module and never reaches an audio graph, so it cannot be pitched, looped or crossfaded by anything — including ZinoxDJ.</li>
+<li><strong>Streaming for DJ use is licensed by agreement, not by API key.</strong> Where it exists at all, it comes from a commercial deal between the service and the software vendor. Spotify returned to DJ software in 2025 only for named partners.</li>
+<li><strong>YouTube's terms forbid extracting the stream</strong>, and Boomplay and Audiomack publish no playback API.</li>
+</ul>
+<p>So the Online tab is deliberately honest about what it is: a way to find music and know what you already have. Mixing runs on files you own, which is also what keeps a set working when the venue's wifi does not.</p>
+<hr>
+<h2 id="12-recording">12. Recording</h2>
 <p><strong>● Record</strong> in the header captures the master output. Click <strong>■ Stop</strong> and your browser save dialog appears. Recordings are <code>.webm</code> files, which VLC and most editors open directly.</p>
 <hr>
-<h2 id="12-keyboard-and-midi">12. Keyboard and MIDI</h2>
+<h2 id="13-keyboard-and-midi">13. Keyboard and MIDI</h2>
 <table><thead><tr>
 <th>Key</th>
 <th>Action</th>
@@ -256,14 +281,14 @@
 <p><strong>Settings → MIDI controller</strong> connects a controller over MIDI.</p>
 <p>Controllers vary far too much for a one-size mapping, so ZinoxDJ learns yours: turn MIDI on, click the action you want in the list, then <strong>move the control on your controller</strong>. It binds immediately. Your mappings are saved.</p>
 <hr>
-<h2 id="13-where-your-data-lives">13. Where your data lives</h2>
+<h2 id="14-where-your-data-lives">14. Where your data lives</h2>
 <ul>
 <li><strong>Windows:</strong> <code>%APPDATA%\ZinoxDJ</code></li>
 <li><strong>macOS:</strong> <code>~/Library/Application Support/ZinoxDJ</code></li>
 </ul>
 <p>That folder holds your library, analysis results, waveform caches and settings. Deleting it resets ZinoxDJ; it never touches your music files.</p>
 <hr>
-<h2 id="14-troubleshooting">14. Troubleshooting</h2>
+<h2 id="15-troubleshooting">15. Troubleshooting</h2>
 <p><strong>A track will not load.</strong> The file may have moved or been renamed. ZinoxDJ remembers paths, not copies. Re-add the folder.</p>
 <p><strong>BPM looks wrong.</strong> Some tracks are genuinely ambiguous. Drum &amp; bass in particular may be reported at half speed (87 instead of 174). Mixing still works, because the suggestion engine treats half and double time as compatible, but the beat grid will be at the slower rate.</p>
 <p><strong>Key looks wrong.</strong> Key detection is very good but not perfect, especially on sparse or heavily processed tracks. If another tool already wrote a key tag, ZinoxDJ trusts that instead.</p>
@@ -271,14 +296,14 @@
 <p><strong>No sound.</strong> Check MASTER is up, the channel fader is up, the crossfader is not pushed fully to the other deck, and the channel's crossfader assign is not set to the wrong side.</p>
 <p><strong>Analysis is slow.</strong> It runs across several background workers and only ever runs once per track. A large library takes a while the first time and is instant thereafter.</p>
 <hr>
-<h2 id="15-what-is-not-in-this-version">15. What is not in this version</h2>
+<h2 id="16-what-is-not-in-this-version">16. What is not in this version</h2>
 <p>Stated plainly so you know before you buy:</p>
 <ul>
 <li><strong>True stem separation</strong> (isolating vocals, drums and instruments properly). The VOCAL knob is a stereo-image trick, not a stem separator.</li>
 <li><strong>Video mixing</strong> and <strong>karaoke</strong>.</li>
 <li><strong>Timecode / DVS</strong> control from vinyl or CDJs.</li>
 <li><strong>Split headphone output</strong> to a separate device.</li>
-<li><strong>Streaming service</strong> libraries.</li>
+<li><strong>Playing streamed audio</strong> from Spotify, Audiomack, YouTube Music or Boomplay through the decks. You can import your playlists and see what you already own (section 11), but the audio itself stays on the service.</li>
 </ul>
 <hr>
 <h2 id="support">Support</h2>
